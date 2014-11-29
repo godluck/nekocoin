@@ -38,7 +38,25 @@
 			}
 			var url=window.location.search.substr(1);
 			if(url){
-			p[url].getElementsByTagName("a")[0].click();}
+				var index=url.indexOf("&");
+				if(index==1){
+					var sec=isNaN(url.charAt(0))?undefined:url.charAt(0);
+					var id=isNaN(url.substr(index+1))?undefined:url.substr(index+1);
+					if(sec&&id){
+						if(sec=="0"){
+							document.getElementById("win").src="/news/?ID="+id;
+						}else if(sec=="1"){
+							document.getElementById("win").src="/notice/?ID="+id;
+						}else{
+							p[sec].getElementsByTagName("a")[0].click();
+						}
+					}
+				}else if(!isNaN(url)){
+				p[url].getElementsByTagName("a")[0].click();}
+				else{
+					document.getElementById("win").src="/search/"+window.location.search
+				}
+			}
 		}
 		function resizeCrossDomainIframe() {
 		    var o = document.getElementById("win");
@@ -48,7 +66,7 @@
 		      o.height = height + "px";
 		      document.getElementsByClassName("frame")[0].style.height=height+80+"px";
 		    }, false);
-		  }
+		}
 	</script>
 </head>
 <body onload="menuClick()">
@@ -75,7 +93,7 @@
 			<li class=menu-item><div class=circle></div><a href="content-link.html" target=win>友情链接</a></li>
 			<li class=menu-item><div class=circle></div><a href="content-text.html" target=win>联系我们</a></li>
 		</ul>
-		<iframe name="win" id="win" seamless onload="resizeCrossDomainIframe()" src="content.html"></iframe>
+		<iframe name="win" id="win" seamless onload="resizeCrossDomainIframe()"></iframe>
 	</div>
 	<footer>Copyright:<a href="#">©给喵金币</a> 2014<br>All rights reserved</footer>
 </body>

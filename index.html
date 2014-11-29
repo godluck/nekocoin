@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="reset.css"/>
 	<style type="text/css">
 		body{background-color: #e1e0d9;min-width: 1000px;}
-		a{color:white;text-decoration: none;}
+		a{color:white;text-decoration: none;word-break:break-all;}
 		.warp{min-height: 699px;height:100%;margin-bottom: 80px;}
 		nav{width:100%;background-color: #1688cc;padding-bottom: 20px;}
 		.nav-content{width: 1000px;margin: 0 auto;position: relative;}
@@ -24,9 +24,10 @@
 		.link>a{color:#816c5b;}
 		.link>a:hover{text-decoration: underline;}
 		.as{margin-top: 25px;}
-		.a{margin-left: 8%;font-size: 15px;font-family: microsoft yahei;width:88%;overflow: hidden;height:20px;}
-		.a>a{color:#403226;}
-		.a>a:hover{color:#d76329;}
+		.a{margin-left: 8%;font-size: 15px;font-family: microsoft yahei;width:82%;padding-right:6%;overflow: hidden;height:20px;line-height: 20px;position: relative;}
+		.etc{position:absolute;height: 20px;line-height: 20px;font-size: 15px;font-family: microsoft yahei;right: 0;top:0;background-color: #e1e0d9;width: 21px;}
+		.a a{color:#403226;}
+		.a a:hover{color:#d76329;}
 		.button-block{padding-left: 2%;width:31%;height:210px;float:left;position: relative;}
 		.search{width: 87%;height:28px;border:1px solid #a6937c;border-radius: 5px;font-size: 16px;font-family: microsoft yahei;padding:  0 5px;margin-bottom: 17px;margin-top: 11px;}
 		.button{width: 42%;height: 33px;float: left;margin-bottom: 13px;margin-right: 6%;background-color: #1168b8;text-align: center;line-height: 33px;font-family: microsoft yahei;font-weight: 400;border-radius: 5px;}
@@ -35,8 +36,21 @@
 		footer a{color:inherit;}
 		footer a:hover{color:white;}
 	</style>
+	<script type="text/javascript">
+	function etc(){
+		var p=document.getElementsByClassName("box");
+		for (i in p){
+			if(p[i].offsetHeight>20){
+				var e=document.createElement("div");
+				e.setAttribute("class","etc");
+				p[i].parentNode.appendChild(e);
+				e.innerHTML="...";
+			}
+		}
+	}
+	</script>
 </head>
-<body>
+<body onload="etc();">
 	<div class=warp>
 	<nav>
 		<div class=nav-content>
@@ -60,11 +74,11 @@
 				<div class=section-title>新闻动态</div>
 				<div class=link><a href="#">>>更多</a></div>
 				<ul class=as>
-					<li class=a><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></li>
-					<li class=a><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></li>
-					<li class=a><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></li>
-					<li class=a><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></li>
-					<li class=a><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></li>
+					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></div></li>
+					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊aaaaaaaaaaaaaaaaaaaaaaa啊啊啊啊啊</a></div></li>
+					<li class=a><div class=box><a href="#">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div></li>
+					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></div></li>
+					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊dsdsdsdsdsdsd啊啊啊啊啊啊啊</a></div></li>
 				</ul>
 			</div>
 			<div class=notice>
@@ -79,7 +93,7 @@
 				</ul>
 			</div>
 			<div class=button-block>
-				<form method=get action="content.html"><input class=search type=text name=search placeholder="请输入关键字搜索"></form>
+				<form method=get action="menu.html"><input class=search type=text name=search placeholder="请输入关键字搜索"></form>
 				<div class=button><a href="#"><img src="icon_kejian.png" style="position:relative;bottom:3px;">课件下载</a></div><div class=button><img src="icon_exchange.png" style="position:relative;top:4px;right:2px;"><a href="#">国际交流</a></div>
 				<div class=button><a href="#"><img src="icon_rules.png" style="position:relative;bottom:2px;right:2px;">规章制度</a></div><div class=button><img src="icon_jobs.png" style="position:relative;top:6px;"><a href="#">就业信息</a></div>
 				<div class=button><a href="#"><img src="icon_links.png"  style="position:relative;bottom:2px;right:2px;">友情链接</a></div><div class=button><img src="icon_connection.png" style="position:relative;top:3px;"><a href="#">联系我们</a></div>
