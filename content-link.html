@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="reset.css"/>
 	<link rel="stylesheet" type="text/css" href="content.css"/>
 </head>
-<body onload="parent.postMessage(document.body.scrollHeight,'*');">
-	<nav class=position>当前位置：<a href="#">首页</a>><a href="#">友情链接</a></nav>
+<body onload="parent.postMessage(document.getElementById('border').offsetHeight,'*');">
+	<div id="border"><nav class=position>当前位置：<a href="#">首页</a>><a href="#">友情链接</a></nav>
 	<div class=content>
 	<figure><a href="#" target=_new><img src="b.png"></a><figcaption>武汉大学</figcaption></figure>
 	<figure><a href="#"><img src="b.png"></a><figcaption>武汉大学</figcaption></figure>
@@ -16,6 +16,6 @@
 	<figure><a href="#"><img src="b.png"></a><figcaption>武汉大学</figcaption></figure>
 	<figure><a href="#"><img src="b.png"></a><figcaption>武汉大学</figcaption></figure>
 	<figure><a href="#"><img src="b.png"></a><figcaption>武汉大学</figcaption></figure>
-	</div>
+	</div><div class="clear"></div></div>
 </body>
 </html>

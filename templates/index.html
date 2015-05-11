@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<!--reset basic html tags in different browsers to uniform style-->
 	<link rel="stylesheet" type="text/css" href="reset.css"/>
 	<style type="text/css">
 		body{background-color: #e1e0d9;min-width: 1000px;}
@@ -16,7 +17,7 @@
 		.center{width:100%;height: 388px;background-color: #006cac;}
 		.center-img{width:941px;height: 379px;margin: 0 auto;display: block;}
 		.content{width: 100%;height: 210px;min-width: 1000px;}
-		.line{width:100%;background-image: url("c.png");height:9px;background-repeat: repeat-x;min-width: 1000px;margin-top: -9px;}
+		.line{width:100%;background-image: url("c.png");height:9px;background-repeat: repeat-x;min-width: 1000px;margin-top: -8px;}
 		.frame{width:1000px;height: 210px;min-width: 1000px;margin: 0 auto;}
 		.news,.notice{width:33%;height:210px;float:left;border-right: 1px solid #d1ccc4;min-width: 332px;position: relative;}
 		.section-title{font-size: 20px;font-family: microsoft yahei;color: #1a6bb6;font-weight: bold;margin-left:8%;margin-top: 15px;}
@@ -37,6 +38,7 @@
 		footer a:hover{color:white;}
 	</style>
 	<script type="text/javascript">
+	//display a "..." after each title that is broken into more than one line.
 	function etc(){
 		var p=document.getElementsByClassName("box");
 		for (i in p){
@@ -50,61 +52,75 @@
 	}
 	</script>
 </head>
+<!--execute etc() after the document finishes loading-->
 <body onload="etc();">
+	<!--warp the content and provide space for footer-->
 	<div class=warp>
+	<!--navigation bar-->
 	<nav>
 		<div class=nav-content>
 			<img src="a.png">
 			<ul class=nav-list>
-				<li class=nav-ele><a href="#">登陆</a></li>
-				<li class=nav-ele><a href="#">招生动态</a></li>
-				<li class=nav-ele><a href="#">师资队伍</a></li>
-				<li class=nav-ele><a href="#">学院概况</a></li>
-				<li class="active nav-ele"><a href="#">首页</a></li>
+				<li class=nav-ele><a href="admin/">登陆</a></li>
+				<li class=nav-ele><a href="menu/?9">招生动态</a></li>
+				<li class=nav-ele><a href="menu/?8">师资队伍</a></li>
+				<li class=nav-ele><a href="menu/?10">学院概况</a></li>
+				<li class="active nav-ele"><a href="">首页</a></li>
 			</ul>
 		</div>
 	</nav>
+	<!--image displayed in the middle-->
 	<div class=center>
 	<img src="b.png" class=center-img>
 	</div>
+	<!--seperator line-->
 	<div class=line></div>
+	<!--contents-->
 	<div class=content>
 		<div class=frame>
+		<!--news section-->
 			<div class=news>
 				<div class=section-title>新闻动态</div>
-				<div class=link><a href="#">>>更多</a></div>
+				<div class=link><a href="menu/?0">>>更多</a></div>
 				<ul class=as>
-					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></div></li>
-					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊aaaaaaaaaaaaaaaaaaaaaaa啊啊啊啊啊</a></div></li>
-					<li class=a><div class=box><a href="#">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div></li>
-					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</a></div></li>
-					<li class=a><div class=box><a href="#">啊啊啊啊啊啊啊啊啊啊啊啊dsdsdsdsdsdsd啊啊啊啊啊啊啊</a></div></li>
+                    {%  for i in news %}
+					<li class=a><div class=box><a href="menu/?0&{{ i.id }}">{{i.title}}</a></div></li>
+                    {% endfor %}
 				</ul>
 			</div>
+		<!--notice section-->
 			<div class=notice>
 				<div class=section-title>通知公告</div>
-				<div class=link><a href="#">>>更多</a></div>
+				<div class=link><a href="menu/?1">>>更多</a></div>
 				<ul class=as>
-					<li class=a><a href="#"></a></li>
-					<li class=a><a href="#"></a></li>
-					<li class=a><a href="#"></a></li>
-					<li class=a><a href="#"></a></li>
-					<li class=a><a href="#"></a></li>
+                    {% for notice in notices %}
+					<li class=a><div class=box><a href="menu/?0&{{ notice.id }}">{{notice.title}}</a></div></li>
+                    {% endfor %}
 				</ul>
 			</div>
+		<!--button-block section-->
 			<div class=button-block>
-				<form method=get action="menu.html">
-				<input class=search type=text name=search placeholder="请输入关键字搜索">
+				<form method=get action='menu/'>
+				<input class=search type=text name=content placeholder="请输入关键字搜索">
 				</form>
-				<div class=button><a href="#"><img src="icon_kejian.png" style="position:relative;bottom:3px;right:3px;">课件下载</a></div>
-				<div class=button><img src="icon_exchange.png" style="position:relative;top:4px;right:7px;"><a href="#">国际交流</a></div>
-				<div class=button><a href="#"><img src="icon_rules.png" style="position:relative;bottom:2px;right:4px;">规章制度</a></div>
-				<div class=button><img src="icon_jobs.png" style="position:relative;top:6px;right:6px;"><a href="#">就业信息</a></div>
-				<div class=button><a href="#"><img src="icon_links.png"  style="position:relative;bottom:2px;right:4px;">友情链接</a></div>
-				<div class=button><img src="icon_connection.png" style="position:relative;top:3px;right:7px;"><a href="#">联系我们</a></div>
+				<div class=button><a href="menu/?5">
+					<img src="icon_kejian.png" style="position:relative;bottom:3px;right:3px;">课件下载</a></div>
+                               		<div class=button><a href="menu/?2">
+                               			<img src="icon_exchange.png"style="position:relative;right:5px;">
+                               			国际交流</a></div>
+				<div class=button><a href="menu/?3">
+					<img src="icon_rules.png" style="position:relative;bottom:2px;right:4px;">规章制度</a></div>
+                                	<div class=button><a href="menu/?4" >
+                                		<img src="icon_jobs.png" style="position:relative;right:4px;">
+                                		就业信息</a></div>
+				<div class=button><a href="menu/?6">
+					<img src="icon_links.png" style="position:relative;bottom:2px;right:4px;">友情链接</a></div>
+                               		<div class=button><a href="menu/?7">
+                               			<img src="icon_connection.png" style="position:relative;right:8px;">联系我们</a></div>
 			</div>
 		</div>
 	</div></div>
+	<!--footer-->
 	<footer>Copyright:<a href="#">©给喵金币</a> 2014<br>All rights reserved</footer>
 </body>
 </html>
